@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6CE40E1F-102A-4403-A9C4-80F641EE8E24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundInterestCalculator.Api", "src\Api\CompoundInterestCalculator.Api.csproj", "{0C8CAA0F-7EDB-46BD-A452-48B834A6CD0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{6A0D68D9-A7F2-4FB1-9BA2-1E54357307E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundInterestCalculator.Application", "src\Application\CompoundInterestCalculator.Application\CompoundInterestCalculator.Application.csproj", "{277CD26F-EE4C-4BC2-A03A-3689540CB43B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundInterestCalculator.Application.Core", "src\Application\CompoundInterestCalculator.Application.Core\CompoundInterestCalculator.Application.Core.csproj", "{D2327522-6715-44A8-94D6-A0702BB8DA2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundInterestCalculatorApp", "src\CompoundInterestCalculatorApp\CompoundInterestCalculatorApp.csproj", "{05C00276-AA13-4EE0-8814-21CA79FA8187}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C8CAA0F-7EDB-46BD-A452-48B834A6CD0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C8CAA0F-7EDB-46BD-A452-48B834A6CD0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C8CAA0F-7EDB-46BD-A452-48B834A6CD0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C8CAA0F-7EDB-46BD-A452-48B834A6CD0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{277CD26F-EE4C-4BC2-A03A-3689540CB43B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{277CD26F-EE4C-4BC2-A03A-3689540CB43B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{277CD26F-EE4C-4BC2-A03A-3689540CB43B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{277CD26F-EE4C-4BC2-A03A-3689540CB43B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2327522-6715-44A8-94D6-A0702BB8DA2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2327522-6715-44A8-94D6-A0702BB8DA2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2327522-6715-44A8-94D6-A0702BB8DA2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2327522-6715-44A8-94D6-A0702BB8DA2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05C00276-AA13-4EE0-8814-21CA79FA8187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05C00276-AA13-4EE0-8814-21CA79FA8187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05C00276-AA13-4EE0-8814-21CA79FA8187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05C00276-AA13-4EE0-8814-21CA79FA8187}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0C8CAA0F-7EDB-46BD-A452-48B834A6CD0D} = {6CE40E1F-102A-4403-A9C4-80F641EE8E24}
+		{6A0D68D9-A7F2-4FB1-9BA2-1E54357307E5} = {6CE40E1F-102A-4403-A9C4-80F641EE8E24}
+		{277CD26F-EE4C-4BC2-A03A-3689540CB43B} = {6A0D68D9-A7F2-4FB1-9BA2-1E54357307E5}
+		{D2327522-6715-44A8-94D6-A0702BB8DA2D} = {6A0D68D9-A7F2-4FB1-9BA2-1E54357307E5}
+		{05C00276-AA13-4EE0-8814-21CA79FA8187} = {6CE40E1F-102A-4403-A9C4-80F641EE8E24}
+	EndGlobalSection
+EndGlobal
