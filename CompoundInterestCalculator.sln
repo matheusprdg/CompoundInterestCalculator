@@ -15,6 +15,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundInterestCalculator.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundInterestCalculatorApp", "src\CompoundInterestCalculatorApp\CompoundInterestCalculatorApp.csproj", "{05C00276-AA13-4EE0-8814-21CA79FA8187}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{282E3226-AC7A-4849-8159-BD5071B938E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundInterestCalculator.Domain", "src\Domain\CompoundInterestCalculator.Domain\CompoundInterestCalculator.Domain.csproj", "{D7544B8C-60D4-4B2C-A2FF-890F35AB858C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundInterestCalculator.Domain.Core", "src\Domain\CompoundInterestCalculator.Domain.Core\CompoundInterestCalculator.Domain.Core.csproj", "{FDE6342B-E9D0-43F0-A8E2-BBD6F78204C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundInterestCalculator.Domain.Models", "src\Domain\CompoundInterestCalculator.Domain.Models\CompoundInterestCalculator.Domain.Models.csproj", "{81C31377-2E8F-4773-9EC9-78953365514F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +48,18 @@ Global
 		{05C00276-AA13-4EE0-8814-21CA79FA8187}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05C00276-AA13-4EE0-8814-21CA79FA8187}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05C00276-AA13-4EE0-8814-21CA79FA8187}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7544B8C-60D4-4B2C-A2FF-890F35AB858C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7544B8C-60D4-4B2C-A2FF-890F35AB858C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7544B8C-60D4-4B2C-A2FF-890F35AB858C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7544B8C-60D4-4B2C-A2FF-890F35AB858C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDE6342B-E9D0-43F0-A8E2-BBD6F78204C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE6342B-E9D0-43F0-A8E2-BBD6F78204C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE6342B-E9D0-43F0-A8E2-BBD6F78204C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE6342B-E9D0-43F0-A8E2-BBD6F78204C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81C31377-2E8F-4773-9EC9-78953365514F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81C31377-2E8F-4773-9EC9-78953365514F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81C31377-2E8F-4773-9EC9-78953365514F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81C31377-2E8F-4773-9EC9-78953365514F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0C8CAA0F-7EDB-46BD-A452-48B834A6CD0D} = {6CE40E1F-102A-4403-A9C4-80F641EE8E24}
@@ -47,5 +67,9 @@ Global
 		{277CD26F-EE4C-4BC2-A03A-3689540CB43B} = {6A0D68D9-A7F2-4FB1-9BA2-1E54357307E5}
 		{D2327522-6715-44A8-94D6-A0702BB8DA2D} = {6A0D68D9-A7F2-4FB1-9BA2-1E54357307E5}
 		{05C00276-AA13-4EE0-8814-21CA79FA8187} = {6CE40E1F-102A-4403-A9C4-80F641EE8E24}
+		{282E3226-AC7A-4849-8159-BD5071B938E9} = {6CE40E1F-102A-4403-A9C4-80F641EE8E24}
+		{D7544B8C-60D4-4B2C-A2FF-890F35AB858C} = {282E3226-AC7A-4849-8159-BD5071B938E9}
+		{FDE6342B-E9D0-43F0-A8E2-BBD6F78204C9} = {282E3226-AC7A-4849-8159-BD5071B938E9}
+		{81C31377-2E8F-4773-9EC9-78953365514F} = {282E3226-AC7A-4849-8159-BD5071B938E9}
 	EndGlobalSection
 EndGlobal
