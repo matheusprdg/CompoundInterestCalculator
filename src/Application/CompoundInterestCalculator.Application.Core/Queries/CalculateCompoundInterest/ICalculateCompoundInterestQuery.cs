@@ -2,5 +2,5 @@ namespace CompoundInterestCalculator.Application.Queries.CalculateCompoundIntere
 
 public interface ICalculateCompoundInterestQuery
 {
-    Task<ICalculateCompoundInterestOutput> Execute(ICalculateCompoundInterestInput input);
+    ICalculateCompoundInterestOutput Execute(ICalculateCompoundInterestInput input, CancellationToken cancellationToken);
 }

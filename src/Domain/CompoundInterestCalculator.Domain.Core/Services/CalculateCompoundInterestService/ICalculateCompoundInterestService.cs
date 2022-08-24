@@ -4,5 +4,5 @@ namespace CompoundInterestCalculator.Domain.Services.CalculateCompoundInterest;
 
 public interface ICalculateCompoundInterestService
 {
-    ICompoundInterestCalculatorOutput Execute(ICompoundInterestCalculatorInput input);
+    ICompoundInterestCalculatorOutput Execute(ICompoundInterestCalculatorInput input, CancellationToken cancellationToken);
 }

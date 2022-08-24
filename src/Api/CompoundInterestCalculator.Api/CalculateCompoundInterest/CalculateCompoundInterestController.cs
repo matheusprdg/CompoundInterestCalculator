@@ -1,5 +1,6 @@
 using CompoundInterestCalculator.Application.Queries.CalculateCompoundInterest;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace CompoundInterestCalculator.Api.CalculateCompoundInterest;
 
@@ -15,11 +16,12 @@ public class CalculateCompoundInterestController : ControllerBase
     }
 
     [HttpGet("calculate")]
-    public ActionResult<string> Get(
-        [FromQuery] CalculateCompoundInterestInput input)
+    public ActionResult<ICalculateCompoundInterestOutput> Get(
+        [FromQuery] [Required] CalculateCompoundInterestInput input,
+        CancellationToken cancellationToken)
     {
-        var items = this.query.Execute(new CalculateCompoundInterestInput());
+        var items = this.query.Execute(input, cancellationToken);
 
-        return "items";
+        return Ok(items);
     }
 }

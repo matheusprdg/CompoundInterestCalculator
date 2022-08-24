@@ -1,11 +1,19 @@
+using CompoundInterestCalculator.Domain.Calculators;
 using CompoundInterestCalculator.Domain.Models;
 
 namespace CompoundInterestCalculator.Domain.Services.CalculateCompoundInterest;
 
 public class CalculateCompoundInterestService : ICalculateCompoundInterestService
 {
-    public ICompoundInterestCalculatorOutput Execute(ICompoundInterestCalculatorInput input)
+    private readonly ICompoundInterestCalculator calculator;
+
+    public CalculateCompoundInterestService(ICompoundInterestCalculator calculator)
     {
-        throw new NotImplementedException();
+        this.calculator = calculator;
+    }
+
+    public ICompoundInterestCalculatorOutput Execute(ICompoundInterestCalculatorInput input, CancellationToken cancellationToken)
+    {
+        return this.calculator.Calculate(input, cancellationToken);
     }
 }

@@ -2,6 +2,6 @@ namespace CompoundInterestCalculator.Domain.Models;
 
 public enum PeriodType
 {
-    Monthly = 1,
-    Yearly = 2
+    Annual = 1,
+    Monthly = 2
 }

@@ -25,6 +25,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompoundInterestCalculator.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{C7032272-616B-44B4-B61C-D247F607FD82}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C462071D-67AA-4BB8-9019-3E912C52D791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompoundInterestCalculatorTests", "tests\CompoundInterestCalculatorTests\CompoundInterestCalculatorTests.csproj", "{BF740DC5-F8EA-4CBE-87F0-46B55E907A93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +63,10 @@ Global
 		{81C31377-2E8F-4773-9EC9-78953365514F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81C31377-2E8F-4773-9EC9-78953365514F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81C31377-2E8F-4773-9EC9-78953365514F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF740DC5-F8EA-4CBE-87F0-46B55E907A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF740DC5-F8EA-4CBE-87F0-46B55E907A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF740DC5-F8EA-4CBE-87F0-46B55E907A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF740DC5-F8EA-4CBE-87F0-46B55E907A93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +82,7 @@ Global
 		{FDE6342B-E9D0-43F0-A8E2-BBD6F78204C9} = {282E3226-AC7A-4849-8159-BD5071B938E9}
 		{81C31377-2E8F-4773-9EC9-78953365514F} = {282E3226-AC7A-4849-8159-BD5071B938E9}
 		{C7032272-616B-44B4-B61C-D247F607FD82} = {6CE40E1F-102A-4403-A9C4-80F641EE8E24}
+		{BF740DC5-F8EA-4CBE-87F0-46B55E907A93} = {C462071D-67AA-4BB8-9019-3E912C52D791}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8DB06F2-A8BE-4017-BA15-0CC0F078A4F7}
