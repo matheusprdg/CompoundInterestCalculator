@@ -1,11 +1,9 @@
-﻿using CompoundInterestCalculator.Domain.Models;
+﻿using CompoundInterestCalculator.Domain.Models.CompoundInterestCalculator;
 
 namespace CompoundInterestCalculator.Domain.Factories;
 
 public interface ICompoundInterestCalculationDetailFactory
 {
-    ICompoundInterestCalculationDetail Create();
-
     ICompoundInterestCalculationDetail Create(
         int month,
         decimal interest,

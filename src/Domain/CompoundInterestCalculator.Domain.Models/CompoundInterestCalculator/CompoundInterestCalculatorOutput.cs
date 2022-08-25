@@ -1,4 +1,4 @@
-namespace CompoundInterestCalculator.Domain.Models;
+namespace CompoundInterestCalculator.Domain.Models.CompoundInterestCalculator;
 
 public class CompoundInterestCalculatorOutput : ICompoundInterestCalculatorOutput
 {

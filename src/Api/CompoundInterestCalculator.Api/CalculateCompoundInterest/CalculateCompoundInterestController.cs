@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace CompoundInterestCalculator.Api.CalculateCompoundInterest;
 
 [ApiController]
-[Route("api/compoundInterestCalculator")]
+[Route("api/compoundInterest")]
 public class CalculateCompoundInterestController : ControllerBase
 {
     private readonly ICalculateCompoundInterestQuery query;

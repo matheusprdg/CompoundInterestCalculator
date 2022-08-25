@@ -1,14 +1,9 @@
-using CompoundInterestCalculator.Api;
-using CompoundInterestCalculator.Application;
-using CompoundInterestCalculator.Domain;
+using CompoundInterestCalculator.CrossCutting.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-
-builder.Services.AddApi();
-builder.Services.AddApplication();
-builder.Services.AddDomain();
+builder.Services.Register();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

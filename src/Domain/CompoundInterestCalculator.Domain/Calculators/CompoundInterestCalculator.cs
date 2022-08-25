@@ -1,5 +1,6 @@
 using CompoundInterestCalculator.Domain.Factories;
 using CompoundInterestCalculator.Domain.Models;
+using CompoundInterestCalculator.Domain.Models.CompoundInterestCalculator;
 
 namespace CompoundInterestCalculator.Domain.Calculators;
 

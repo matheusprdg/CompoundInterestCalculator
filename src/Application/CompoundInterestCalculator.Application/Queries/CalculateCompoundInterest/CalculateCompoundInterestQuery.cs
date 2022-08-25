@@ -1,4 +1,5 @@
 using CompoundInterestCalculator.Domain.Models;
+using CompoundInterestCalculator.Domain.Models.CompoundInterestCalculator;
 using CompoundInterestCalculator.Domain.Services.CalculateCompoundInterest;
 using FluentValidation;
 
@@ -19,7 +20,7 @@ public class CalculateCompoundInterestQuery : ICalculateCompoundInterestQuery
     {
         this.validator.ValidateAndThrow(input);
 
-        var retorno = this.service.Execute(new CompoundInterestCalculatorInput()
+        var retorno = this.service.Execute(new Input()
         {
             Period = input.Period,
             InitialContribution = input.InitialContribution,
@@ -32,7 +33,7 @@ public class CalculateCompoundInterestQuery : ICalculateCompoundInterestQuery
         return new CalculateCompoundInterestOutput(retorno);
     }
 
-    private class CompoundInterestCalculatorInput : ICompoundInterestCalculatorInput
+    private class Input : ICompoundInterestCalculatorInput
     {
         public int Period { get; set; }
         public decimal? InitialContribution { get; set; }
