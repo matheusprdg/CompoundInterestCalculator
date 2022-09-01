@@ -8,7 +8,7 @@
         financeiro de forma simples utilizando nossa calculadora!
       </h6>
       <b-jumbotron class="bg-light pl-3 pr-3 pt-4 pb-4" border-variant="gray">
-        <h5 class="mb-1 text-left text-primary font-weight-bolder">
+        <h5 class="mb-0 text-left text-primary font-weight-bolder">
           Simulador de Juros Compostos
         </h5>
         <div>
@@ -23,7 +23,7 @@
                   <b-input-group prepend="R$">
                     <b-form-input
                       id="initial-value"
-                      v-model="input.initialValue"
+                      v-model="input.initialContribution"
                       placeholder="1,000"
                       type="number"
                     >
@@ -61,7 +61,7 @@
                   <b-input-group prepend="%">
                     <b-form-input
                       id="interest-rate"
-                      v-model="input.interestRate"
+                      v-model="input.interestPercentage"
                       class="mb-sm-0"
                       placeholder="12,00"
                       type="number"
@@ -70,7 +70,7 @@
                     <b-input-group-append>
                       <b-form-select
                         v-model="input.interestType"
-                        :options="options"
+                        :options="interestRateOptions"
                       ></b-form-select>
                     </b-input-group-append>
                   </b-input-group>
@@ -96,7 +96,7 @@
                     <b-input-group-append>
                       <b-form-select
                         v-model="input.interestType"
-                        :options="options"
+                        :options="periodOptions"
                       ></b-form-select>
                     </b-input-group-append>
                   </b-input-group>
@@ -106,7 +106,12 @@
           </b-row>
           <b-row align-h="between" class="mt-3">
             <b-col cols="auto">
-              <b-button size="lg" class="pr-5 pl-5" pill variant="primary"
+              <b-button
+                size="lg"
+                class="pr-5 pl-5"
+                pill
+                variant="primary"
+                @click="calcular"
                 >Calcular</b-button
               >
             </b-col>
@@ -116,48 +121,62 @@
           </b-row>
         </div>
       </b-jumbotron>
+      <compound-interest-calculator-result v-if="calculated" :output="output" />
     </b-container>
   </div>
 </template>
 
 <script lang="ts">
+import "reflect-metadata";
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { inject } from "inversify-props";
+import { Symbols } from "../services";
+import { CalculatorService } from "../services/calculator";
+import { CompoundInterestCalculatorInput } from "../models/compound-interest-calculator-input";
+import { CompoundInterestCalculatorOutput } from "../models/compound-interest-calculator-output";
+import CompoundInterestCalculatorResult from "./compound-interest-calculator-result.vue";
 
-@Component
+@Component({
+  components: {
+    "compound-interest-calculator-result": CompoundInterestCalculatorResult,
+  },
+})
 export default class CompoundInterestCalculatorForm extends Vue {
-  // @Prop() private msg!: string;
+  @inject(Symbols.CalculatorServices)
+  private calculatorService!: CalculatorService;
+  private calculated = false;
+  public output = {} as CompoundInterestCalculatorOutput;
 
   public input: CompoundInterestCalculatorInput = {
-    initialValue: 0,
-    monthlyValue: 0,
-    interestRate: 0,
+    initialContribution: null,
+    monthlyValue: null,
+    interestPercentage: 12,
     interestType: 1,
     period: 1,
     periodType: 1,
   };
 
-  public options = [
+  private interestRateOptions = [
     { value: 1, text: "Anual" },
     { value: 2, text: "Mensal" },
   ];
-}
 
-export interface CompoundInterestCalculatorInput {
-  initialValue?: number | null;
-  monthlyValue?: number | null;
-  interestRate: number | null;
-  interestType: InterestType;
-  period: number;
-  periodType: PeriodType;
-}
+  private periodOptions = [
+    { value: 1, text: "ano(s)" },
+    { value: 2, text: "mes(es)" },
+  ];
 
-export enum InterestType {
-  annual = 1,
-  monthly = 2,
-}
+  private async calcular() {
+    try {
+      let result = await this.calculatorService.calculateCompoundInterest(
+        this.input
+      );
 
-export enum PeriodType {
-  annual = 1,
-  monthly = 2,
+      this.output = result;
+      this.calculated = true;
+    } catch (error) {
+      alert(error);
+    }
+  }
 }
 </script>
