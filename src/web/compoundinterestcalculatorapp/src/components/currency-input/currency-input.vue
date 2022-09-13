@@ -1,11 +1,5 @@
 <template>
-  <b-form-input
-    class="font-weight-bold"
-    :id="id"
-    :placeholder="placeHolder"
-    type="text"
-    ref="inputRef"
-  >
+  <b-form-input :id="id" :placeholder="placeHolder" type="text" ref="inputRef">
   </b-form-input>
 </template>
 

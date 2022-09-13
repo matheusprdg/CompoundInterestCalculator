@@ -15,7 +15,7 @@ public sealed class CalculateCompoundInterestInputValidator : AbstractValidator<
 		RuleFor(f => f.InterestPercentage)
 			.NotNull()
 			.GreaterThan(0)
-			.WithMessage("Porcentagem não pode ser menor ou igual a 0.");
+			.WithMessage("Taxa de Juros não pode ser menor ou igual a 0.");
 
 		RuleFor(f => f.Period)
 			.NotNull()

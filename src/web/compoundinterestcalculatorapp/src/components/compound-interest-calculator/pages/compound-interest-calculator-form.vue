@@ -69,7 +69,7 @@
                       <currency-input
                         :id="'interest-rate'"
                         v-model.number="input.interestPercentage"
-                        :placeHolder="'12,00'"
+                        :placeHolder="''"
                       >
                       </currency-input>
                       <b-input-group-append>
