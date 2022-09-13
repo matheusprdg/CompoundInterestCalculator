@@ -7,115 +7,127 @@
         cálculo é sempre em cima do montante anterior. Faça esse cálculo
         financeiro de forma simples utilizando nossa calculadora!
       </h6>
-      <b-jumbotron class="bg-light pl-3 pr-3 pt-4 pb-4" border-variant="gray">
-        <h5 class="mb-0 text-left text-primary font-weight-bolder">
-          Simulador de Juros Compostos
-        </h5>
-        <div>
-          <b-row>
-            <b-col class="col-12 col-lg-6">
-              <b-form>
-                <b-form-group
-                  class="text-left mt-4"
-                  label="Valor inicial"
-                  label-for="initial-value"
+      <b-overlay :show="calculating" rounded="sm">
+        <template #overlay>
+          <div class="text-center">
+            <b-spinner
+              variant="primary"
+              type="grow"
+              label="Spinning"
+            ></b-spinner>
+            <p class="font-weight-bold">Calculando...</p>
+          </div>
+        </template>
+        <b-jumbotron class="bg-light pl-3 pr-3 pt-4 pb-4" border-variant="gray">
+          <h5 class="mb-0 text-left text-primary font-weight-bolder">
+            Simulador de Juros Compostos
+          </h5>
+          <div>
+            <b-row>
+              <b-col class="col-12 col-lg-6">
+                <b-form>
+                  <b-form-group
+                    class="text-left mt-4"
+                    label="Valor inicial"
+                    label-for="initial-value"
+                  >
+                    <b-input-group prepend="R$">
+                      <currency-input
+                        :id="'initial-value'"
+                        v-model.number="input.initialContribution"
+                        :placeHolder="'1.000,00'"
+                      ></currency-input>
+                    </b-input-group>
+                  </b-form-group>
+                </b-form>
+              </b-col>
+              <b-col class="col-12 col-lg-6">
+                <b-form>
+                  <b-form-group
+                    class="text-left mt-4"
+                    label="Valor mensal"
+                    label-for="monthly-value"
+                  >
+                    <b-input-group prepend="R$">
+                      <currency-input
+                        :id="'monthly-value'"
+                        v-model.number="input.monthlyValue"
+                        :placeHolder="'1.000,00'"
+                      ></currency-input>
+                    </b-input-group>
+                  </b-form-group>
+                </b-form>
+              </b-col>
+              <b-col class="col-12 col-lg-6">
+                <b-form>
+                  <b-form-group
+                    class="text-left mt-4"
+                    label="Taxa de Juros"
+                    label-for="interest-rate"
+                  >
+                    <b-input-group prepend="%">
+                      <currency-input
+                        :id="'interest-rate'"
+                        v-model.number="input.interestPercentage"
+                        :placeHolder="'12,00'"
+                      >
+                      </currency-input>
+                      <b-input-group-append>
+                        <b-form-select
+                          v-model.number="input.interestType"
+                          :options="interestRateOptions"
+                        ></b-form-select>
+                      </b-input-group-append>
+                    </b-input-group>
+                  </b-form-group>
+                </b-form>
+              </b-col>
+              <b-col class="col-12 col-lg-6">
+                <b-form>
+                  <b-form-group
+                    class="text-left mt-4"
+                    label="Período"
+                    label-for="period"
+                  >
+                    <b-input-group>
+                      <b-form-input
+                        id="period"
+                        v-model.number="input.period"
+                        class="mb-2 mb-sm-0 font-weight-bold"
+                        placeholder="1"
+                        type="number"
+                      >
+                      </b-form-input>
+                      <b-input-group-append>
+                        <b-form-select
+                          v-model="input.periodType"
+                          :options="periodOptions"
+                        ></b-form-select>
+                      </b-input-group-append>
+                    </b-input-group>
+                  </b-form-group>
+                </b-form>
+              </b-col>
+            </b-row>
+            <b-row align-h="between" class="mt-3">
+              <b-col cols="auto">
+                <b-button
+                  size="lg"
+                  class="pr-5 pl-5"
+                  pill
+                  variant="primary"
+                  @click="calculate"
                 >
-                  <b-input-group prepend="R$">
-                    <currency-input
-                      :id="'initial-value'"
-                      v-model.number="input.initialContribution"
-                      :placeHolder="'1.000,00'"
-                    ></currency-input>
-                  </b-input-group>
-                </b-form-group>
-              </b-form>
-            </b-col>
-            <b-col class="col-12 col-lg-6">
-              <b-form>
-                <b-form-group
-                  class="text-left mt-4"
-                  label="Valor mensal"
-                  label-for="monthly-value"
-                >
-                  <b-input-group prepend="R$">
-                    <currency-input
-                      :id="'monthly-value'"
-                      v-model.number="input.monthlyValue"
-                      :placeHolder="'1.000,00'"
-                    ></currency-input>
-                  </b-input-group>
-                </b-form-group>
-              </b-form>
-            </b-col>
-            <b-col class="col-12 col-lg-6">
-              <b-form>
-                <b-form-group
-                  class="text-left mt-4"
-                  label="Taxa de Juros"
-                  label-for="interest-rate"
-                >
-                  <b-input-group prepend="%">
-                    <currency-input
-                      :id="'interest-rate'"
-                      v-model.number="input.interestPercentage"
-                      :placeHolder="'12,00'"
-                    >
-                    </currency-input>
-                    <b-input-group-append>
-                      <b-form-select
-                        v-model.number="input.interestType"
-                        :options="interestRateOptions"
-                      ></b-form-select>
-                    </b-input-group-append>
-                  </b-input-group>
-                </b-form-group>
-              </b-form>
-            </b-col>
-            <b-col class="col-12 col-lg-6">
-              <b-form>
-                <b-form-group
-                  class="text-left mt-4"
-                  label="Período"
-                  label-for="period"
-                >
-                  <b-input-group>
-                    <b-form-input
-                      id="period"
-                      v-model.number="input.period"
-                      class="mb-2 mb-sm-0 font-weight-bold"
-                      placeholder="1"
-                      type="number"
-                    >
-                    </b-form-input>
-                    <b-input-group-append>
-                      <b-form-select
-                        v-model="input.periodType"
-                        :options="periodOptions"
-                      ></b-form-select>
-                    </b-input-group-append>
-                  </b-input-group>
-                </b-form-group>
-              </b-form>
-            </b-col>
-          </b-row>
-          <b-row align-h="between" class="mt-3">
-            <b-col cols="auto">
-              <b-button
-                size="lg"
-                class="pr-5 pl-5"
-                pill
-                variant="primary"
-                @click="calculate"
-              >
-                Calcular
-              </b-button>
-            </b-col>
-            <b-col cols="auto">
-              <button class="btn btn-link js-btn-reset-form">Limpar</button>
-            </b-col>
-          </b-row>
-        </div>
-      </b-jumbotron>
+                  Calcular
+                </b-button>
+              </b-col>
+              <b-col cols="auto">
+                <button class="btn btn-link js-btn-reset-form">Limpar</button>
+              </b-col>
+            </b-row>
+          </div>
+        </b-jumbotron>
+      </b-overlay>
       <compound-interest-calculator-result v-if="calculated" :output="output" />
     </b-container>
   </div>
@@ -142,6 +154,7 @@ export default class CompoundInterestCalculatorForm extends Vue {
   @inject(Symbols.CalculatorServices)
   private calculatorService!: CalculatorService;
   private calculated = false;
+  private calculating = false;
   public output = {} as CompoundInterestCalculatorOutput;
 
   public input: CompoundInterestCalculatorInput = {
@@ -165,11 +178,11 @@ export default class CompoundInterestCalculatorForm extends Vue {
 
   private async calculate() {
     try {
-      let result = await this.calculatorService.calculateCompoundInterest(
+      this.calculating = true;
+      this.output = await this.calculatorService.calculateCompoundInterest(
         this.input
       );
-
-      this.output = result;
+      this.calculating = false;
       this.calculated = true;
     } catch (error) {
       let errorMessage = error.response.data?.message;
@@ -179,6 +192,8 @@ export default class CompoundInterestCalculatorForm extends Vue {
       } else {
         alert(error.message);
       }
+
+      this.calculating = false;
     }
   }
 }

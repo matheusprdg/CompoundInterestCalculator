@@ -1,6 +1,7 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using System.Net;
+using System.Text;
 using System.Text.Json;
 
 namespace CompoundInterestCalculator.CrossCutting.ErrorHandler;
@@ -42,7 +43,7 @@ public class ErrorHandlerMiddleware
         response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
         var result = JsonSerializer.Serialize(new { message = message });
-        await response.WriteAsync(result);
+        await response.WriteAsync(result, Encoding.UTF8);
     }
 
     private string GetValidationErrorMessage(ValidationException ex)
