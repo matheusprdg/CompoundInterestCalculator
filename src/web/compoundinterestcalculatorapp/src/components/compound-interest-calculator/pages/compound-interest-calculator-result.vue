@@ -7,7 +7,7 @@
           <div class="border rounded bg-white p-3">
             <p class="text-muted">Valor total final</p>
             <div class="h4 mb-0 font-weight-bold text-truncate text-muted">
-              R$ {{ output.finalTotalValue }}
+              {{ output.finalTotalValue | currency }}
             </div>
           </div>
         </b-col>
@@ -15,7 +15,7 @@
           ><div class="border rounded bg-white p-3">
             <p class="text-muted">Valor total investido</p>
             <div class="h4 mb-0 font-weight-bold text-truncate text-primary">
-              R$ {{ output.totalAmountInvested }}
+              {{ output.totalAmountInvested | currency }}
             </div>
           </div>
         </b-col>
@@ -23,7 +23,7 @@
           ><div class="border rounded bg-white p-3">
             <p class="text-muted">Total em juros</p>
             <div class="h4 mb-0 font-weight-bold text-truncate text-success">
-              R$ {{ output.totalInInterest }}
+              {{ output.totalInInterest | currency }}
             </div>
           </div>
         </b-col>
@@ -34,14 +34,32 @@
             <b-tabs pills justified card class="tab-style">
               <b-tab title="Tabela" active class="p-0">
                 <div class="tab-content">
-                  <b-table
-                    :items="output.details"
-                    class="text-center"
-                    outlined
-                    bordered
-                    hover
-                  >
-                  </b-table>
+                  <table class="table table-bordered table-hover text-center">
+                    <thead>
+                      <tr>
+                        <th>Mês</th>
+                        <th>Juros</th>
+                        <th>Total Investido</th>
+                        <th>Total de Juros</th>
+                        <th>Total acumulado</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="(value, key) in output.details" :key="key">
+                        <td>
+                          {{
+                            value.initialContribution
+                              ? "Valor Inicial"
+                              : value.month
+                          }}
+                        </td>
+                        <td>{{ value.interest | currency }}</td>
+                        <td>{{ value.totalInvested | currency }}</td>
+                        <td>{{ value.totalInterest | currency }}</td>
+                        <td>{{ value.accumulatedTotal | currency }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </b-tab>
               <b-tab title="Gráfico"></b-tab>

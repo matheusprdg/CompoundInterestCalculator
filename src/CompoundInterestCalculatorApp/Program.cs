@@ -1,4 +1,5 @@
 using CompoundInterestCalculator.CrossCutting.IoC;
+using CompoundInterestCalculator.CrossCutting.ErrorHandler;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,8 @@ app.UseCors(options => options
     .AllowAnyOrigin()
     .AllowAnyMethod()
     .AllowAnyHeader());
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 

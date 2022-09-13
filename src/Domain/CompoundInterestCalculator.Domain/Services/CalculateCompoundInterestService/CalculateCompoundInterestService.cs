@@ -3,7 +3,7 @@ using CompoundInterestCalculator.Domain.Models.CompoundInterestCalculator;
 
 namespace CompoundInterestCalculator.Domain.Services.CalculateCompoundInterest;
 
-public class CalculateCompoundInterestService : ICalculateCompoundInterestService
+public sealed class CalculateCompoundInterestService : ICalculateCompoundInterestService
 {
     private readonly ICompoundInterestCalculator calculator;
 

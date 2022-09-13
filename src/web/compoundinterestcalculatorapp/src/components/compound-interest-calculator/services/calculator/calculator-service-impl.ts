@@ -6,13 +6,16 @@ import { injectable } from "inversify-props";
 
 @injectable()
 export class CalculatorServiceImpl implements CalculatorService {
-    private axios = http;
-    private basePath = "https://localhost:7298";
+  private axios = http;
+  private basePath =
+    process.env.NODE_ENV == "production"
+      ? "https://matheusprdg-calculator.herokuapp.com"
+      : "https://localhost:7298";
 
-    public async calculateCompoundInterest(input: CompoundInterestCalculatorInput): Promise<CompoundInterestCalculatorOutput> {
-        const result = (await this.axios.get<CompoundInterestCalculatorOutput>
-            (`${this.basePath}/api/compoundInterest/calculate`, { params: input }));
+  public async calculateCompoundInterest(input: CompoundInterestCalculatorInput): Promise<CompoundInterestCalculatorOutput> {
+    const result = (await this.axios.get<CompoundInterestCalculatorOutput>
+      (`${this.basePath}/api/compoundInterest/calculate`, { params: input }));
 
-        return result.data;
-    }
+    return result.data;
+  }
 }

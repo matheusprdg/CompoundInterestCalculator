@@ -5,7 +5,7 @@ using FluentValidation;
 
 namespace CompoundInterestCalculator.Application.Queries.CalculateCompoundInterest;
 
-public class CalculateCompoundInterestQuery : ICalculateCompoundInterestQuery
+public sealed class CalculateCompoundInterestQuery : ICalculateCompoundInterestQuery
 {
     private readonly ICalculateCompoundInterestService service;
     private readonly CalculateCompoundInterestInputValidator validator;
@@ -33,7 +33,7 @@ public class CalculateCompoundInterestQuery : ICalculateCompoundInterestQuery
         return new CalculateCompoundInterestOutput(retorno);
     }
 
-    private class Input : ICompoundInterestCalculatorInput
+    private sealed class Input : ICompoundInterestCalculatorInput
     {
         public int Period { get; set; }
         public decimal? InitialContribution { get; set; }

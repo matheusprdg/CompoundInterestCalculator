@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace CompoundInterestCalculator.Application.Queries.CalculateIncomeTax;
 
-public class CalculateIncomeTaxInputValidator : AbstractValidator<ICalculateIncomeTaxInput>
+public sealed class CalculateIncomeTaxInputValidator : AbstractValidator<ICalculateIncomeTaxInput>
 {
 	public CalculateIncomeTaxInputValidator()
 	{

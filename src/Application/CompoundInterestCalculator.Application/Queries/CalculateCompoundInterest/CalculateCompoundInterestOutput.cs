@@ -2,7 +2,7 @@ using CompoundInterestCalculator.Domain.Models.CompoundInterestCalculator;
 
 namespace CompoundInterestCalculator.Application.Queries.CalculateCompoundInterest;
 
-public class CalculateCompoundInterestOutput : ICalculateCompoundInterestOutput
+public sealed class CalculateCompoundInterestOutput : ICalculateCompoundInterestOutput
 {
     private readonly ICompoundInterestCalculatorOutput output;
 

@@ -5,7 +5,7 @@ using FluentValidation;
 
 namespace CompoundInterestCalculator.Application.Queries.CalculateIncomeTax;
 
-public class CalculateIncomeTaxQuery : ICalculateIncomeTaxQuery
+public sealed class CalculateIncomeTaxQuery : ICalculateIncomeTaxQuery
 {
     private readonly ICalculateIncomeTaxService service;
     private readonly CalculateIncomeTaxInputValidator inputValidator;
@@ -33,7 +33,7 @@ public class CalculateIncomeTaxQuery : ICalculateIncomeTaxQuery
         return new CalculateIncomeTaxOutput(retorno);
     }
 
-    private class Input : IIncomeTaxCalculatorInput
+    private sealed class Input : IIncomeTaxCalculatorInput
     {
         public decimal TotalWithInterest { get; set; }
         public decimal TotalInvested { get; set; }

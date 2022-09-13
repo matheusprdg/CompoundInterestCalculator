@@ -2,7 +2,7 @@ using CompoundInterestCalculator.Application.Queries.CalculateCompoundInterest;
 
 namespace CompoundInterestCalculator.Api.CalculateCompoundInterest;
 
-public class CalculateCompoundInterestInput : ICalculateCompoundInterestInput
+public sealed class CalculateCompoundInterestInput : ICalculateCompoundInterestInput
 {
     public int Period { get; set; }
 

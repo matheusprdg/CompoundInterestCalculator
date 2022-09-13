@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace CompoundInterestCalculator.Application.Queries.CalculateCompoundInterest;
 
-public class CalculateCompoundInterestInputValidator : AbstractValidator<ICalculateCompoundInterestInput>
+public sealed class CalculateCompoundInterestInputValidator : AbstractValidator<ICalculateCompoundInterestInput>
 {
 	public CalculateCompoundInterestInputValidator()
 	{

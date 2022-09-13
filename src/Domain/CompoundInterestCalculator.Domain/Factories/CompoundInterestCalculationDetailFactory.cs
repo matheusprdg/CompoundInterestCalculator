@@ -2,7 +2,7 @@
 
 namespace CompoundInterestCalculator.Domain.Factories;
 
-public class CompoundInterestCalculationDetailFactory : ICompoundInterestCalculationDetailFactory
+public sealed class CompoundInterestCalculationDetailFactory : ICompoundInterestCalculationDetailFactory
 {
     public ICompoundInterestCalculationDetail Create(
         int month,

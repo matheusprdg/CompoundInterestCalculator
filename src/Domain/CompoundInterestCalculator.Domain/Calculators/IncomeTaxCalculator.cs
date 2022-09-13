@@ -28,25 +28,25 @@ public abstract class IncomeTaxCalculator : IIncomeTaxCalculator
     }
 }
 
-public class IncomeTaxCalculatorTo180Days : IncomeTaxCalculator
+public sealed class IncomeTaxCalculatorTo180Days : IncomeTaxCalculator
 {
     public IncomeTaxCalculatorTo180Days() : base(22.5m) {}
     public override bool Compatible(IncomeTaxPeriod incomeTaxPeriod) => incomeTaxPeriod == IncomeTaxPeriod.To180Days;
 }
 
-public class IncomeTaxCalculatorTo360Days : IncomeTaxCalculator
+public sealed class IncomeTaxCalculatorTo360Days : IncomeTaxCalculator
 {
     public IncomeTaxCalculatorTo360Days() : base(20m) { }
     public override bool Compatible(IncomeTaxPeriod incomeTaxPeriod) => incomeTaxPeriod == IncomeTaxPeriod.To360Days;
 }
 
-public class IncomeTaxCalculatorTo720Days : IncomeTaxCalculator
+public sealed class IncomeTaxCalculatorTo720Days : IncomeTaxCalculator
 {
     public IncomeTaxCalculatorTo720Days() : base(17.5m) { }
     public override bool Compatible(IncomeTaxPeriod incomeTaxPeriod) => incomeTaxPeriod == IncomeTaxPeriod.To720Days;
 }
 
-public class IncomeTaxCalculatorOver720Days : IncomeTaxCalculator
+public sealed class IncomeTaxCalculatorOver720Days : IncomeTaxCalculator
 {
     public IncomeTaxCalculatorOver720Days() : base(15m) { }
     public override bool Compatible(IncomeTaxPeriod incomeTaxPeriod) => incomeTaxPeriod == IncomeTaxPeriod.Over720Days;

@@ -1,6 +1,6 @@
 namespace CompoundInterestCalculator.Domain.Models.CompoundInterestCalculator;
 
-public class CompoundInterestCalculatorOutput : ICompoundInterestCalculatorOutput
+public sealed class CompoundInterestCalculatorOutput : ICompoundInterestCalculatorOutput
 {
     public decimal FinalTotalValue { get; set; }
     public decimal TotalAmountInvested { get; set; }

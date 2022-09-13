@@ -2,7 +2,7 @@ using CompoundInterestCalculator.Domain.Models.IncomeTaxCalculator;
 
 namespace CompoundInterestCalculator.Application.Queries.CalculateIncomeTax;
 
-public class CalculateIncomeTaxOutput : ICalculateIncomeTaxOutput
+public sealed class CalculateIncomeTaxOutput : ICalculateIncomeTaxOutput
 {
     private readonly IIncomeTaxCalculatorOutput output;
 

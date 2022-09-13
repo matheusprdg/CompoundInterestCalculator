@@ -1,6 +1,6 @@
 ﻿namespace CompoundInterestCalculator.Domain.Models.CompoundInterestCalculator;
 
-public class CompoundInterestCalculationDetail : ICompoundInterestCalculationDetail
+public sealed class CompoundInterestCalculationDetail : ICompoundInterestCalculationDetail
 {
     public CompoundInterestCalculationDetail()
     {

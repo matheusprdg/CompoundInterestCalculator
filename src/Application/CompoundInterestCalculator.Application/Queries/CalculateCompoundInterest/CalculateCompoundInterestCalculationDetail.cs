@@ -1,6 +1,6 @@
 namespace CompoundInterestCalculator.Application.Queries.CalculateCompoundInterest;
 
-public class CalculateCompoundInterestCalculationDetail : ICalculateCompoundInterestCalculationDetail
+public sealed class CalculateCompoundInterestCalculationDetail : ICalculateCompoundInterestCalculationDetail
 {
     public CalculateCompoundInterestCalculationDetail(
         int month,

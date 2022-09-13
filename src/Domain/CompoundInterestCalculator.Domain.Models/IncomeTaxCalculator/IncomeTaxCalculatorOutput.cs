@@ -1,6 +1,6 @@
 namespace CompoundInterestCalculator.Domain.Models.IncomeTaxCalculator;
 
-public class IncomeTaxCalculatorOutput : IIncomeTaxCalculatorOutput
+public sealed class IncomeTaxCalculatorOutput : IIncomeTaxCalculatorOutput
 {
     public decimal FinalTotalValue { get; set; }
     public decimal TotalAmountInvested { get; set; }

@@ -4,7 +4,7 @@ using CompoundInterestCalculator.Domain.Models.CompoundInterestCalculator;
 
 namespace CompoundInterestCalculator.Domain.Calculators;
 
-public class CompoundInterestCalculator : ICompoundInterestCalculator
+public sealed class CompoundInterestCalculator : ICompoundInterestCalculator
 {
     private readonly ICompoundInterestCalculationDetailFactory calculationDetailFactory;
     private int PeriodInMonths;

@@ -2,7 +2,7 @@
 
 namespace CompoundInterestCalculator.Domain.Providers;
 
-public class IncomeTaxCalculatorProvider : IIncomeTaxCalculatorProvider
+public sealed class IncomeTaxCalculatorProvider : IIncomeTaxCalculatorProvider
 {
     private readonly IEnumerable<IIncomeTaxCalculator> calculators;
 

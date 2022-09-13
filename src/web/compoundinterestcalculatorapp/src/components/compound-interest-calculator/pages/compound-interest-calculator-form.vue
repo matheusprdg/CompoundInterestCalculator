@@ -21,13 +21,11 @@
                   label-for="initial-value"
                 >
                   <b-input-group prepend="R$">
-                    <b-form-input
-                      id="initial-value"
-                      v-model="input.initialContribution"
-                      placeholder="1,000"
-                      type="number"
-                    >
-                    </b-form-input>
+                    <currency-input
+                      :id="'initial-value'"
+                      v-model.number="input.initialContribution"
+                      :placeHolder="'1.000,00'"
+                    ></currency-input>
                   </b-input-group>
                 </b-form-group>
               </b-form>
@@ -40,13 +38,11 @@
                   label-for="monthly-value"
                 >
                   <b-input-group prepend="R$">
-                    <b-form-input
-                      id="monthly-value"
-                      v-model="input.monthlyValue"
-                      placeholder="1,000"
-                      type="number"
-                    >
-                    </b-form-input>
+                    <currency-input
+                      :id="'monthly-value'"
+                      v-model.number="input.monthlyValue"
+                      :placeHolder="'1.000,00'"
+                    ></currency-input>
                   </b-input-group>
                 </b-form-group>
               </b-form>
@@ -59,17 +55,15 @@
                   label-for="interest-rate"
                 >
                   <b-input-group prepend="%">
-                    <b-form-input
-                      id="interest-rate"
-                      v-model="input.interestPercentage"
-                      class="mb-sm-0"
-                      placeholder="12,00"
-                      type="number"
+                    <currency-input
+                      :id="'interest-rate'"
+                      v-model.number="input.interestPercentage"
+                      :placeHolder="'12,00'"
                     >
-                    </b-form-input>
+                    </currency-input>
                     <b-input-group-append>
                       <b-form-select
-                        v-model="input.interestType"
+                        v-model.number="input.interestType"
                         :options="interestRateOptions"
                       ></b-form-select>
                     </b-input-group-append>
@@ -87,15 +81,15 @@
                   <b-input-group>
                     <b-form-input
                       id="period"
-                      v-model="input.period"
-                      class="mb-2 mb-sm-0"
+                      v-model.number="input.period"
+                      class="mb-2 mb-sm-0 font-weight-bold"
                       placeholder="1"
                       type="number"
                     >
                     </b-form-input>
                     <b-input-group-append>
                       <b-form-select
-                        v-model="input.interestType"
+                        v-model="input.periodType"
                         :options="periodOptions"
                       ></b-form-select>
                     </b-input-group-append>
@@ -111,9 +105,10 @@
                 class="pr-5 pl-5"
                 pill
                 variant="primary"
-                @click="calcular"
-                >Calcular</b-button
+                @click="calculate"
               >
+                Calcular
+              </b-button>
             </b-col>
             <b-col cols="auto">
               <button class="btn btn-link js-btn-reset-form">Limpar</button>
@@ -128,17 +123,19 @@
 
 <script lang="ts">
 import "reflect-metadata";
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import { inject } from "inversify-props";
 import { Symbols } from "../services";
 import { CalculatorService } from "../services/calculator";
 import { CompoundInterestCalculatorInput } from "../models/compound-interest-calculator-input";
 import { CompoundInterestCalculatorOutput } from "../models/compound-interest-calculator-output";
 import CompoundInterestCalculatorResult from "./compound-interest-calculator-result.vue";
+import CurrencyInput from "../../currency-input/currency-input.vue";
 
 @Component({
   components: {
     "compound-interest-calculator-result": CompoundInterestCalculatorResult,
+    "currency-input": CurrencyInput,
   },
 })
 export default class CompoundInterestCalculatorForm extends Vue {
@@ -150,7 +147,7 @@ export default class CompoundInterestCalculatorForm extends Vue {
   public input: CompoundInterestCalculatorInput = {
     initialContribution: null,
     monthlyValue: null,
-    interestPercentage: 12,
+    interestPercentage: null,
     interestType: 1,
     period: 1,
     periodType: 1,
@@ -166,7 +163,7 @@ export default class CompoundInterestCalculatorForm extends Vue {
     { value: 2, text: "mes(es)" },
   ];
 
-  private async calcular() {
+  private async calculate() {
     try {
       let result = await this.calculatorService.calculateCompoundInterest(
         this.input
@@ -175,7 +172,13 @@ export default class CompoundInterestCalculatorForm extends Vue {
       this.output = result;
       this.calculated = true;
     } catch (error) {
-      alert(error);
+      let errorMessage = error.response.data?.message;
+
+      if (errorMessage) {
+        alert(errorMessage);
+      } else {
+        alert(error.message);
+      }
     }
   }
 }
